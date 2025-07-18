@@ -1,0 +1,152 @@
+.LoginFullPage {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.LoginInformation {
+    background-image: url("../assets/bg_int9.png");
+    width: 65%;
+    height: 100dvh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Credentials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align items at the top initially */
+    align-items: center;
+    width: 35%;
+    height: 100dvh;
+    background-image: url("../assets/gradient_1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    padding-top: 60px; /* Adjust as needed for title */
+    padding-bottom: 60px; /* Adjust as needed for dots */
+    box-sizing: border-box;
+    position: relative; /* For absolute positioning of title and dots */
+}
+
+.Credentials h1 {
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+}
+
+.metaContainer {
+    display: flex;
+    width: 250px;
+    margin-top: 20px; /* Adjust as needed */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+.metaContainer span {
+    position: relative;
+    cursor: pointer;
+    transition: .5s ease all;
+}
+
+.metaContainer span::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(to right, #8defff, #a0ffa0);
+    transition: width 0.4s ease;
+}
+
+.metaContainer span:hover::after {
+    cursor: pointer;
+    width: 100%;
+}
+
+.LoginSubmit {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(144, 238, 144, 0.3), rgba(173, 216, 230, 0.3));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 1.2em;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    margin-top: 60px;
+    width: 250px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.LoginSubmit::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0.1) 100%
+    );
+    transform: skewX(-20deg);
+}
+
+.LoginSubmit:hover::before {
+    animation: shine 0.9s ease-in-out;
+}
+
+@keyframes shine {
+    0% {
+        left: -75%;
+    }
+    100% {
+        left: 125%;
+    }
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 80px; /* Adjust as needed */
+    left: 0;
+    right: 0;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer; /* Add cursor for interactivity */
+}
+
+.dot.active {
+    background: #fff;
+    border:2px solid #51ff7d;
+    box-shadow: 0 0 5px #fff;
+}

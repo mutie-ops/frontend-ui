@@ -1,0 +1,53 @@
+.container {
+    background-image: url("../assets/gradient_1.png");
+    width: 20%;
+    height: 100dvh;
+}
+
+.container ul{
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+.container li{
+    cursor: pointer;
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    font-size: 1.2em;
+    transition: all 0.3s ease-in-out;
+
+}
+.container li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0.1) 100%
+    );
+    transform: skewX(-20deg);
+}
+.container li:hover::before {
+
+    animation: shine 0.9s ease-in-out;
+}
+@keyframes shine {
+    0% {
+        left: -75%;
+    }
+    100% {
+        left: 125%;
+    }
+}
+.container li.active {
+    background: linear-gradient(135deg, rgba(144, 238, 144, 0.3), rgba(173, 216, 230, 0.3));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}

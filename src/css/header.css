@@ -1,0 +1,41 @@
+.Header {
+    background-color: #ffffff;
+    margin: 3px;
+    border-radius: 5px;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+}
+.Header ul{
+    list-style:none;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+.Header li{
+    border: 1px #cfcfcf solid;
+    border-radius:5px;
+    padding:5px 15px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all .5s ease-in-out;
+
+}
+.Header li:hover{
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(144, 238, 144, 0.9), rgba(90, 194, 230, 0.88));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+
+}
