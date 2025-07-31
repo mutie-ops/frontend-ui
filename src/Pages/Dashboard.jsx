@@ -5,12 +5,38 @@ import templates from '../Template/biometric_template.js';
 import SageTemplateTab from '../components/SageTab.jsx';
 
 function Dashboard() {
-    const [excelData, setExcelData] = React.useState([]);
+    const [excelData, setExcelData] = React.useState(()=>
+    {
+        const stored = localStorage.getItem('excelData');
+        return stored ?  JSON.parse(stored) : [];
+    });
+
+
     const [selectedRows, setSelectedRows] = React.useState([]);
     const [searchQuery, setSearchQuery] = React.useState('');
     const [columnFilters, setColumnFilters] = React.useState({});
-    const [templateInfo, setTemplateInfo] = React.useState(null);
-    const [activeTab, setActiveTab] = React.useState('import');
+    const [templateInfo, setTemplateInfo] = React.useState(() => {
+        const stored = localStorage.getItem('templateInfo');
+        return stored ? JSON.parse(stored) : null;
+    });
+
+
+    const [activeTab, setActiveTab] = React.useState(() => {
+        return localStorage.getItem('activeTab') || 'import';
+    });
+
+    React.useEffect(() => {
+        localStorage.setItem('excelData', JSON.stringify(excelData));
+    }, [excelData]);
+
+    React.useEffect(() => {
+        localStorage.setItem('templateInfo', JSON.stringify(templateInfo));
+    }, [templateInfo]);
+
+    React.useEffect(() => {
+        localStorage.setItem('activeTab', activeTab);
+    }, [activeTab]);
+
 
     const fileInputRef = React.useRef(null);
     const editableColumns = templateInfo?.editableColumns || [];
