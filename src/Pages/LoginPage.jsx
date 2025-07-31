@@ -40,7 +40,7 @@ function LoginPage() {
                                }}/>
 
                     <div className="metaContainer">
-                        <span>Forgot Password</span>
+                        <span onClick={()=> alert('Reset Password from Sage Security')}>Forgot Password</span>
                         <span onClick={handleSetupClick}>Setup</span>
                     </div>
 
@@ -55,16 +55,22 @@ function LoginPage() {
             content: (
                 <>
                     <FormInput
-                        name="email"
+                        name="serverName"
                         control={control}
-                        label=""
-                        rules={{ required: 'Email is required' }}
+                        label="Server Name"
+                        rules={{ required: 'Servername is required' }}
                     />
                     <FormInput
-                        name="phone"
+                        name="DBuserName"
                         control={control}
-                        label="Phone"
-                        rules={{ required: 'Phone is required' }}
+                        label="DB Username"
+                        rules={{ required: 'Database username is required' }}
+                    />
+                    <FormInput
+                        name="Password"
+                        control={control}
+                        label="DB password"
+                        rules={{ required: 'Database password is required' }}
                     />
                     <div className="metaContainer">
                         <span onClick={prevStep}>Back</span>
@@ -80,16 +86,10 @@ function LoginPage() {
             content: (
                 <>
                     <FormInput
-                        name="address"
+                        name="apiKey"
                         control={control}
-                        label="Address"
-                        rules={{required: 'Address is required'}}
-                    />
-                    <FormInput
-                        name="postalCode"
-                        control={control}
-                        label="Postal Code"
-                        rules={{required: 'Postal Code is required'}}
+                        label="Api Key"
+                        rules={{required: 'Api Key is required'}}
                     />
                     <div className="metaContainer">
                         <span onClick={prevStep}>Back</span>
