@@ -1,7 +1,7 @@
 import '../css/dashboard.css';
 import React from 'react';
 import * as XLSX from 'xlsx';
-import templates from '../Template/template.js';
+import templates from '../Template/biometric_template.js';
 import SageTemplateTab from '../components/SageTab.jsx';
 
 function Dashboard() {
@@ -26,6 +26,8 @@ function Dashboard() {
             const worksheet = workbook.Sheets[workbook.SheetNames[0]];
             const raw = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
             const uploadedHeaders = raw[0];
+
+            console.log("Uploaded Headers:", uploadedHeaders);
 
             const matchedTemplate = Object.entries(templates).find(([key, tmpl]) => (
                 tmpl.expectedHeaders.length === uploadedHeaders.length &&

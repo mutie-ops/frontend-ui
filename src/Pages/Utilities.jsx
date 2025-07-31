@@ -5,11 +5,11 @@ function Utilities() {
     const payrollDefinitions = {
         EA: {
             name: 'Earnings',
-            definitions: ['OVERTIME1', 'OVERTIME2', 'ROLLCALLOT1', 'ROLLCALLOT2']
+            definitions: ['OVERTIME_15', 'OVERTIME_20', 'ROLLCALLOT1', 'ROLLCALLOT2']
         },
         DD: {
             name: 'Deductions',
-            definitions: ['ABSENTISM']
+            definitions: ['ABSENTEEISM']
         }
     };
 

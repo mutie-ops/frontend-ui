@@ -31,8 +31,40 @@ const templates = {
         filterableColumns :["Name",
                             "User ID",
                             "Department"]
-    }
+    },
 
+    "Fingertec-biometrics": {
+        name: "Fingertec",
+        expectedHeaders: [
+            'User ID',
+            'First Name',
+            'Last Name',
+            'Employee ID',
+            'Department',
+            'Total Work',
+            'Total OT',
+            'Total Diff OT',
+            'Total Short',
+            'Total Absent',
+            'WORKDAY Count',
+            'WORKDAY Present',
+            'WORKDAY Day',
+            'WORKDAY Work'
+
+
+        ],
+        editableColumns: ['Total Work',
+            'Total OT',
+            'Total Diff OT',
+            'Total Short',
+            'Total Absent'],
+
+        filterableColumns: ['USER ID',
+            'First Name',
+            'Last Name',
+            'Employee ID',
+            'Department']
+    }
 
 }
 
