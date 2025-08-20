@@ -19,36 +19,56 @@ function SageTemplateTab({ excelData, templateKey = 'sage' }) {
 
         const transformedRows = []
 
-        const totalOT = parseFloat(String(row['Total OT'] || '0').replace(":", '.'));
-        const totalDiffOT = parseFloat(String(row['Total Diff OT'] || '0').replace(":", '.'));
+        const workDayOT = parseFloat(String(row['WORKDAY Overtime'] || '0').replace(":", '.'));
+        const holidayOT = parseFloat(String(row['HOLIDAY Overtime'] || '0').replace(":", '.'));
+        const restDayOT = parseFloat(String(row['RESTDAY Overtime'] || '0').replace(":", '.'));
         const totalAbsent = parseFloat(String(row['Total Absent'] || '0').replace(":", '.'));
+
+        // for Kisima
+        const workingHours = parseFloat(String(row['Worked Normal Hrs'] || '0').replace(":", '.'));
+        const overtime1 = parseFloat(String(row['Overtime Hrs @ 1.5'] || '0').replace(":", '.'));
+        const overtime2 = parseFloat(String(row['Overtime Hrs @ 2.0'] || '0').replace(":", '.'));
+        const lostHours = parseFloat(String(row['Lost  Hrs'] || '0').replace(":", '.'));
 
 
 
         const { definitions } = payrollSettings
 
-        if (definitions?.EA.OVERTIME_15 && totalAbsent > 0) {
+        const companyPrefixMap = {
+            KN: 'KENTALYASEASONA',
+            TA: 'ARABLE-TEMP',
+            PA: 'ARABLE-PERM',
+            SA: 'ARABLE-SHORT',
+            PF: 'FLORI-PERM',
+            TR:'FLORI-TEMP'
+        };
+
+        const employeeId = row['Employee ID'] || row['Staff No.'] || row['User ID'] || '';
+        const prefix = employeeId.substring(0, 2); // first two letters
+        const companyRule = companyPrefixMap[prefix] || 'KENTALYAPERMANE';
+
+        if (definitions?.EA.OVERTIME_15 && workDayOT > 0) {
             transformedRows.push({
                 'Employee Code': row['Employee ID'],
-                'Employee Display Name': row['First Name'],
-                'Company Rule': 'MINET_RE',
+                'Employee Display Name': row['First Name'] + row['Last Name'],
+                'Company Rule': companyRule,
                 'Pay Run Definition': 'MAIN',
                 'Line Type': 'EA',
-                'Payroll Definition Code': 'OVERTIME_15',
-                'Units': totalOT,
+                'Payroll Definition Code': 'OVERTIME1',
+                'Units': workDayOT,
                 'Date Worked': row['Date Worked'] || '',
                 // Other fields can be filled as needed or default to 'N/A'
             });
         }
-        if (definitions?.EA?.OVERTIME_20 && totalDiffOT > 0) {
+        if (definitions?.EA?.OVERTIME_20 && holidayOT || restDayOT > 0) {
             transformedRows.push({
                 'Employee Code': row['Employee ID'],
-                'Employee Display Name': row['First Name'],
-                'Company Rule': 'MINET_RE',
+                'Employee Display Name': row['First Name'] + row['Last Name'],
+                'Company Rule': companyRule,
                 'Pay Run Definition': 'MAIN',
                 'Line Type': 'EA',
-                'Payroll Definition Code': 'OVERTIME_20',
-                'Units': totalDiffOT,
+                'Payroll Definition Code': 'OVERTIME2',
+                'Units': holidayOT + restDayOT,
                 'Date Worked': row['Date Worked'] || '',
             });
         }
@@ -56,8 +76,8 @@ function SageTemplateTab({ excelData, templateKey = 'sage' }) {
         if (definitions?.DD?.ABSENTEEISM && totalAbsent > 0) {
             transformedRows.push({
                 'Employee Code': row['Employee ID'],
-                'Employee Display Name': row['First Name'],
-                'Company Rule': 'MINET_RE',
+                'Employee Display Name': row['First Name'] + row['Last Name'],
+                'Company Rule': companyRule,
                 'Pay Run Definition': 'MAIN',
                 'Line Type': 'DD',
                 'Payroll Definition Code': 'ABSENTEEISM',
@@ -65,6 +85,50 @@ function SageTemplateTab({ excelData, templateKey = 'sage' }) {
                 'Date Worked': row['Date Worked'] || '',
             });
         }
+
+        // FOR KISIMA
+        if (definitions?.EA.OVERTIME_15 && overtime1 > 0) {
+            transformedRows.push({
+                'Employee Code':  row['Employee ID'] || row['Staff No.'] || row['User ID'] || '',
+                'Employee Display Name': row['First Name'] + row['Last Name'] || row['Staff Name'],
+                'Company Rule': companyRule,
+                'Pay Run Definition': 'MAIN',
+                'Line Type': 'EA',
+                'Payroll Definition Code': 'OVERTIME1',
+                'Units': overtime1,
+                'Date Worked': row['Date Worked'] || '',
+                // Other fields can be filled as needed or default to 'N/A'
+            });
+        }
+        if (definitions?.EA?.OVERTIME_20 && overtime2 > 0) {
+            transformedRows.push({
+                'Employee Code': row['Employee ID'] || row['Staff No.'] || row['User ID'] || '',
+                'Employee Display Name': row['First Name'] + row['Last Name'] || row['Staff Name'],
+                'Company Rule': companyRule,
+                'Pay Run Definition': 'MAIN',
+                'Line Type': 'EA',
+                'Payroll Definition Code': 'OVERTIME2',
+                'Units': overtime2,
+                'Date Worked': row['Date Worked'] || '',
+            });
+        }
+
+        if (definitions?.EA?.LOST_HOURS && lostHours > 0) {
+            transformedRows.push({
+                'Employee Code':  row['Employee ID'] || row['Staff No.'] || row['User ID'] || '',
+                'Employee Display Name': row['First Name'] + row['Last Name'] || row['Staff Name'],
+                'Company Rule': companyRule,
+                'Pay Run Definition': 'MAIN',
+                'Line Type': 'EA',
+                'Payroll Definition Code': 'LOSTHOURS',
+                'Units': -lostHours,
+                'Date Worked': row['Date Worked'] || '',
+            });
+        }
+
+
+
+
 
         return transformedRows;
 

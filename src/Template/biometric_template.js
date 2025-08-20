@@ -64,7 +64,66 @@ const templates = {
             'Last Name',
             'Employee ID',
             'Department']
+    },
+    "Kentalya-biometrics": {
+        name: "Fingertec",
+        expectedHeaders: [
+            'User ID',
+            'First Name',
+            'Last Name',
+            'Employee ID',
+            'Department',
+            'RESTDAY Overtime',
+            'HOLIDAY Overtime',
+            'WORKDAY Overtime',
+            'WORKDAY Diff OT',
+            'WORKDAY Short',
+            'HOLIDAY Present',
+            'Total Work'
+
+
+        ],
+        editableColumns: [
+            'RESTDAY Overtime',
+            'HOLIDAY Overtime',
+            'WORKDAY Overtime',
+        ],
+
+        filterableColumns: ['USER ID',
+            'First Name',
+            'Last Name',
+            'Employee ID',
+            'Department']
+    },
+    "Kisima Musterol":{
+        name: 'Kisima Musterol',
+        expectedHeaders: [  "Staff No.",
+            "Staff Name",
+            "Department",
+            "Date",
+            "In",
+            "Out",
+            "Shift",
+            "View Status",
+            "Shift Planned Hours",
+            "Worked Normal Hrs",
+            "Overtime Hrs @ 1.5",
+            "Overtime Hrs @ 2.0",
+            "Lost  Hrs",
+            "Total Worked Hours",
+            "Clockings"],
+
+        editableColumns :[  "Worked Normal Hrs",
+            "Overtime Hrs @ 1.5",
+            "Total Work Hours",
+            "Overtime Hrs @ 2.0",
+            "Lost  Hrs"],
+
+        filterableColumns :["Staff No.",
+            "Staff Name",
+            "Department"]
     }
+
 
 }
 
