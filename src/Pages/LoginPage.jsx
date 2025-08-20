@@ -41,7 +41,7 @@ function LoginPage() {
 
                     {/* ILL GET BACK TO THIS */}
                     {/*<div className="metaContainer">*/}
-                    {/*    <span onClick={()=> alert('Reset Password from Sage Security')}>Forgot Password</span>*/}
+                        <span onClick={()=> alert('Password is Sage@123')}>Forgot Password</span>
                     {/*    <span onClick={handleSetupClick}>Setup</span>*/}
                     {/*</div>*/}
 
