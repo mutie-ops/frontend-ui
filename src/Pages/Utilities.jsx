@@ -70,41 +70,41 @@ function Utilities() {
             <h2>Sage 300 People Parameters</h2>
 
             {/* ========== DATABASE SETTINGS ========== */}
-            <div style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '25px', borderRadius: '5px' }}>
-                <h3>Connection Settings</h3>
-                <input
-                    type="text"
-                    placeholder="URL"
-                    value={config.url}
-                    onChange={(e) => handleInputChange('url', e.target.value)}
-                    style={{ margin: '5px', padding: '5px 10px' }}
-                    disabled={!isEditing}
-                />
-                <input
-                    type="text"
-                    placeholder="Database Name"
-                    value={config.db}
-                    onChange={(e) => handleInputChange('db', e.target.value)}
-                    style={{ margin: '5px', padding: '5px 10px' }}
-                    disabled={!isEditing}
-                />
-                <input
-                    type="text"
-                    placeholder="API Key"
-                    value={config.apiKey}
-                    onChange={(e) => handleInputChange('apiKey', e.target.value)}
-                    style={{ margin: '5px', padding: '5px 10px' }}
-                    disabled={!isEditing}
-                />
+            {/*<div style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '25px', borderRadius: '5px' }}>*/}
+            {/*    <h3>Connection Settings</h3>*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        placeholder="URL"*/}
+            {/*        value={config.url}*/}
+            {/*        onChange={(e) => handleInputChange('url', e.target.value)}*/}
+            {/*        style={{ margin: '5px', padding: '5px 10px' }}*/}
+            {/*        disabled={!isEditing}*/}
+            {/*    />*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        placeholder="Database Name"*/}
+            {/*        value={config.db}*/}
+            {/*        onChange={(e) => handleInputChange('db', e.target.value)}*/}
+            {/*        style={{ margin: '5px', padding: '5px 10px' }}*/}
+            {/*        disabled={!isEditing}*/}
+            {/*    />*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        placeholder="API Key"*/}
+            {/*        value={config.apiKey}*/}
+            {/*        onChange={(e) => handleInputChange('apiKey', e.target.value)}*/}
+            {/*        style={{ margin: '5px', padding: '5px 10px' }}*/}
+            {/*        disabled={!isEditing}*/}
+            {/*    />*/}
 
-                <div className="save-buttons" style={{ marginTop: '10px' }}>
-                    {isEditing ? (
-                        <button onClick={saveConfigToStorage}>Save</button>
-                    ) : (
-                        <button onClick={() => setIsEditing(true)}>Edit</button>
-                    )}
-                </div>
-            </div>
+            {/*    <div className="save-buttons" style={{ marginTop: '10px' }}>*/}
+            {/*        {isEditing ? (*/}
+            {/*            <button onClick={saveConfigToStorage}>Save</button>*/}
+            {/*        ) : (*/}
+            {/*            <button onClick={() => setIsEditing(true)}>Edit</button>*/}
+            {/*        )}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             {/* ========== PAYROLL DEFINITIONS ========== */}
             <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '5px' , overflowY: 'auto', }}>

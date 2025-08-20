@@ -39,10 +39,11 @@ function LoginPage() {
                                    minLength: {value: 6, message: "Password must be at least 6 characters"}
                                }}/>
 
-                    <div className="metaContainer">
-                        <span onClick={()=> alert('Reset Password from Sage Security')}>Forgot Password</span>
-                        <span onClick={handleSetupClick}>Setup</span>
-                    </div>
+                    {/* ILL GET BACK TO THIS */}
+                    {/*<div className="metaContainer">*/}
+                    {/*    <span onClick={()=> alert('Reset Password from Sage Security')}>Forgot Password</span>*/}
+                    {/*    <span onClick={handleSetupClick}>Setup</span>*/}
+                    {/*</div>*/}
 
 
                     <button className="LoginSubmit" type="submit">Login</button>  </>)
@@ -131,9 +132,12 @@ function LoginPage() {
     }
 
     function onSubmit(data) {
-        console.log('Data to Submit', data);
-        if(data){
+        const hardcodedUsername ='Admin'
+        const hardcodedPassword ='Sage@123'
+        if(data.userName ===hardcodedUsername && data.password === hardcodedPassword){
             navigate('/main')
+        }else {
+            alert('Invalid username or password');
         }
     }
 
@@ -163,18 +167,18 @@ function LoginPage() {
                         </div>
                     </form>
                 </FormProvider>
-                {isSetupMode && (
-                    <div className='step-indicator'>
-                        {visibleSteps.map((stepItem, index) => (
-                            <div
-                                key={stepItem.key}
-                                className={`dot ${index === step-1 ? 'active' : ''}`}
-                                onClick={() => goToStep(index + 1)}
-                            >
-                            </div>
-                        ))}
-                    </div>
-                )}
+                {/*{isSetupMode && (*/}
+                {/*    <div className='step-indicator'>*/}
+                {/*        {visibleSteps.map((stepItem, index) => (*/}
+                {/*            <div*/}
+                {/*                key={stepItem.key}*/}
+                {/*                className={`dot ${index === step-1 ? 'active' : ''}`}*/}
+                {/*                onClick={() => goToStep(index + 1)}*/}
+                {/*            >*/}
+                {/*            </div>*/}
+                {/*        ))}*/}
+                {/*    </div>*/}
+                {/*)}*/}
             </div>
         </div>
     );

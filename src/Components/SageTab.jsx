@@ -155,9 +155,8 @@ function SageTemplateTab({ excelData, templateKey = 'sage' }) {
     return (
         <>
         <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-            <button className="import-button"
-            onClick={handleExportExcel}>Export Excel</button>
-            <button className="import-button" onClick={()=> alert('Cannot push to sage, connection to sage error')}>Push to Sage</button>
+            <button className="import-button" onClick={handleExportExcel}>Export Excel</button>
+            {/*<button className="import-button" onClick={()=> alert('Cannot push to sage, connection to sage error')}>Push to Sage</button>*/}
         </div>
         <div className="table-scroll-wrapper">
             <table>
