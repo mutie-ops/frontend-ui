@@ -5,7 +5,10 @@ function Utilities() {
     const payrollDefinitions = {
         EA: {
             name: 'Earnings',
-            definitions: ['OVERTIME_15', 'OVERTIME_20', 'ROLLCALLOT1', 'ROLLCALLOT2','LOST_HOURS']
+            // KISIMA DEFINITIONS
+            // definitions: ['OVERTIME_15', 'OVERTIME_20', 'ROLLCALLOT1', 'ROLLCALLOT2','LOST_HOURS', 'BASIC_PAY']
+            // KENTALYA DEFINITONS
+            definitions: ['OVERTIME_15', 'OVERTIME_20', 'BASIC']
         },
         DD: {
             name: 'Deductions',
@@ -18,7 +21,9 @@ function Utilities() {
     const [isEditing, setIsEditing] = useState(false);
     const [config, setConfig] = useState({
         url: '',
-        db: '',
+        port: '',
+        username: '',
+        password: '',
         apiKey: ''
     });
 
@@ -69,48 +74,64 @@ function Utilities() {
         <div className="Dashboard-container">
             <h2>Sage 300 People Parameters</h2>
 
-            {/* ========== DATABASE SETTINGS ========== */}
-            {/*<div style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '25px', borderRadius: '5px' }}>*/}
-            {/*    <h3>Connection Settings</h3>*/}
-            {/*    <input*/}
-            {/*        type="text"*/}
-            {/*        placeholder="URL"*/}
-            {/*        value={config.url}*/}
-            {/*        onChange={(e) => handleInputChange('url', e.target.value)}*/}
-            {/*        style={{ margin: '5px', padding: '5px 10px' }}*/}
-            {/*        disabled={!isEditing}*/}
-            {/*    />*/}
-            {/*    <input*/}
-            {/*        type="text"*/}
-            {/*        placeholder="Database Name"*/}
-            {/*        value={config.db}*/}
-            {/*        onChange={(e) => handleInputChange('db', e.target.value)}*/}
-            {/*        style={{ margin: '5px', padding: '5px 10px' }}*/}
-            {/*        disabled={!isEditing}*/}
-            {/*    />*/}
-            {/*    <input*/}
-            {/*        type="text"*/}
-            {/*        placeholder="API Key"*/}
-            {/*        value={config.apiKey}*/}
-            {/*        onChange={(e) => handleInputChange('apiKey', e.target.value)}*/}
-            {/*        style={{ margin: '5px', padding: '5px 10px' }}*/}
-            {/*        disabled={!isEditing}*/}
-            {/*    />*/}
+             ========== API CONFIG SETTINGS ==========
+            <div style={{border: '1px solid #ccc', padding: '15px', marginBottom: '25px', borderRadius: '5px'}}>
+                <h3>Connection Settings</h3>
+                <input
+                    type="text"
+                    placeholder="Host name"
+                    value={config.url}
+                    onChange={(e) => handleInputChange('url', e.target.value)}
+                    style={{margin: '5px', padding: '5px 10px'}}
+                    disabled={!isEditing}
+                />
+                <input
+                    type="text"
+                    placeholder="host port"
+                    value={config.port}
+                    onChange={(e) => handleInputChange('port', e.target.value)}
+                    style={{margin: '5px', padding: '5px 10px'}}
+                    disabled={!isEditing}
+                />
+                <input
+                    type="text"
+                    placeholder="Sage Username"
+                    value={config.username}
+                    onChange={(e) => handleInputChange('username', e.target.value)}
+                    style={{margin: '5px', padding: '5px 10px'}}
+                    disabled={!isEditing}
+                />
+                <input
+                    type="password"
+                    placeholder="Sage Password"
+                    value={config.password}
+                    onChange={(e) => handleInputChange('password', e.target.value)}
+                    style={{margin: '5px', padding: '5px 10px'}}
+                    disabled={!isEditing}
+                />
+                <input
+                    type="text"
+                    placeholder="API Key"
+                    value={config.apiKey}
+                    onChange={(e) => handleInputChange('apiKey', e.target.value)}
+                    style={{margin: '5px', padding: '5px 10px'}}
+                    disabled={!isEditing}
+                />
 
-            {/*    <div className="save-buttons" style={{ marginTop: '10px' }}>*/}
-            {/*        {isEditing ? (*/}
-            {/*            <button onClick={saveConfigToStorage}>Save</button>*/}
-            {/*        ) : (*/}
-            {/*            <button onClick={() => setIsEditing(true)}>Edit</button>*/}
-            {/*        )}*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+                <div className="save-buttons" style={{marginTop: '10px'}}>
+                    {isEditing ? (
+                        <button onClick={saveConfigToStorage}>Save</button>
+                    ) : (
+                        <button onClick={() => setIsEditing(true)}>Edit</button>
+                    )}
+                </div>
+            </div>
 
             {/* ========== PAYROLL DEFINITIONS ========== */}
-            <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '5px' , overflowY: 'auto', }}>
+            <div style={{border: '1px solid #ccc', padding: '15px', borderRadius: '5px', overflowY: 'auto',}}>
                 <h3>Payroll Definitions</h3>
 
-                {Object.entries(payrollDefinitions).map(([code, { name, definitions }]) => (
+                {Object.entries(payrollDefinitions).map(([code, {name, definitions}]) => (
                     <div key={code} style={{ marginBottom: '15px' }}>
                         <label>
                             <input

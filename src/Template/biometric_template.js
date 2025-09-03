@@ -79,7 +79,33 @@ const templates = {
             'WORKDAY Diff OT',
             'WORKDAY Short',
             'HOLIDAY Present',
-            'Total Work'
+            'Total Work',
+            'WORKDAY Count',
+            'WORKDAY Present',
+            'OFFDAY Present',
+            'Group Duty Roster',
+            'IC/Social Security No.',
+            'Card No.',
+            'WORKDAY Day',
+            'WORKDAY Work',
+            'WORKDAY Overtime Count',
+            'WORKDAY Diff OT Count',
+            'WORKDAY Short Count',
+            'HOLIDAY Count',
+            'HOLIDAY Day',
+            'HOLIDAY Work',
+            'HOLIDAY Diff OT',
+            'HOLIDAY Short',
+            'HOLIDAY Overtime Count',
+            'HOLIDAY Diff OT Count',
+            'HOLIDAY Short Count',
+            'RESTDAY Count',
+            'RESTDAY Present',
+            'RESTDAY Day',
+            'RESTDAY Work',
+            'Total Absent',
+            'Total OT',
+            'ANNUAL LEAVE'
 
 
         ],
@@ -87,6 +113,7 @@ const templates = {
             'RESTDAY Overtime',
             'HOLIDAY Overtime',
             'WORKDAY Overtime',
+            'WORKDAY Present'
         ],
 
         filterableColumns: ['USER ID',

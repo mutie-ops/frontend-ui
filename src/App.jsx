@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Router, Routes} from "react-router";
 import {StrictMode, React} from "react";
 import LoginPage from './Pages/LoginPage'
 import MainPage from "./Pages/mainPage";
+
 function App() {
 
   return (

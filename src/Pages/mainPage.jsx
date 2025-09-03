@@ -3,7 +3,9 @@ import SideNavigation from "../Components/sideNavigation.jsx";
 import '../css/mainPage.css'
 import Dashboard from "../Pages/Dashboard.jsx";
 import Utilities from "../Pages/Utilities.jsx";
+import TestAPI from "../Pages/API.jsx";
 import Header from "../Components/Header.jsx";
+import LoginPage from "./LoginPage.jsx";
 
 function MainPage(){
 
@@ -25,6 +27,7 @@ function MainPage(){
             <SideNavigation activeView={activeView} setActiveView={setActiveView}/>
            <div className="main-page-content">
                {/*<Header />*/}
+
                {renderView()}
            </div>
         </div>
